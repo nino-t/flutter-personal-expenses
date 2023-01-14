@@ -1,8 +1,5 @@
-// ignore_for_file: deprecated_member_use
-
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import 'package:personal_expanses/transaction.dart';
+import 'package:personal_expanses/widgets/user_transaction.dart';
 
 void main() => runApp(const MyApp());
 
@@ -21,14 +18,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
 
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'T-Shirt', amount: 25.99, date: DateTime.now()),
-    Transaction(id: 't3', title: 'Bag', amount: 87.99, date: DateTime.now()),
-    Transaction(id: 't4', title: 'Jacket', amount: 78.99, date: DateTime.now())
-  ];
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +30,8 @@ class MyHomePage extends StatelessWidget {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.end,
-          children: <Widget>[
-            const Card(
+          children: const <Widget>[
+            Card(
               child: SizedBox(
                 width: double.infinity,
                 child: Text('Chart!'),
@@ -48,65 +39,7 @@ class MyHomePage extends StatelessWidget {
               elevation: 5,
               color: Colors.blue,
             ),
-            Card(
-              elevation: 5,
-              child: Container(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: <Widget>[
-                    const TextField(
-                      decoration: InputDecoration(labelText: 'Title'),
-                    ),
-                    const TextField(
-                        decoration: InputDecoration(labelText: 'Amount')),
-                    FlatButton(
-                      child: const Text('Add Transaction'),
-                      textColor: Colors.purple,
-                      onPressed: () {},
-                    )
-                  ],
-                ),
-              ),
-            ),
-            Column(
-              children: transactions.map((trx) {
-                return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        child: Text(
-                          '\$${trx.amount}',
-                          style: const TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 18,
-                              color: Colors.purple),
-                        ),
-                        margin: const EdgeInsets.symmetric(
-                            vertical: 10, horizontal: 15),
-                        decoration: BoxDecoration(
-                            border: Border.all(color: Colors.purple)),
-                        padding: const EdgeInsets.all(7),
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            trx.title,
-                            style: const TextStyle(
-                                fontSize: 14, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            DateFormat.yMMMd().format(trx.date),
-                            style: const TextStyle(color: Colors.grey),
-                          )
-                        ],
-                      )
-                    ],
-                  ),
-                );
-              }).toList(),
-            ),
+            UserTransaction()
           ],
         ));
   }
