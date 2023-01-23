@@ -44,12 +44,12 @@ class _MyHomePageState extends State<MyHomePage> {
   final amountController = TextEditingController();
 
   final List<Transaction> _transactions = [
-    Transaction(
-        id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
-    Transaction(
-        id: 't2', title: 'T-Shirt', amount: 25.99, date: DateTime.now()),
-    Transaction(id: 't3', title: 'Bag', amount: 87.99, date: DateTime.now()),
-    Transaction(id: 't4', title: 'Jacket', amount: 78.99, date: DateTime.now())
+    // Transaction(
+    //     id: 't1', title: 'New Shoes', amount: 69.99, date: DateTime.now()),
+    // Transaction(
+    //     id: 't2', title: 'T-Shirt', amount: 25.99, date: DateTime.now()),
+    // Transaction(id: 't3', title: 'Bag', amount: 87.99, date: DateTime.now()),
+    // Transaction(id: 't4', title: 'Jacket', amount: 78.99, date: DateTime.now())
   ];
 
   void _addNewTransaction(String trxTitle, double trxAmount) {
@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             const Card(
               child: SizedBox(
