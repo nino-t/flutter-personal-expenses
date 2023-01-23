@@ -13,7 +13,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expanses',
       // ignore: deprecated_member_use
-      theme: ThemeData(primarySwatch: Colors.purple, accentColor: Colors.amber),
+      theme: ThemeData(
+          primarySwatch: Colors.purple,
+          accentColor: Colors.amber,
+          fontFamily: 'Quicksand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: const TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold)),
+          appBarTheme: const AppBarTheme(
+              titleTextStyle: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20))),
       home: const MyHomePage(),
     );
   }
@@ -66,7 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Personal Expanses'),
+        title: const Text(
+          'Personal Expanses',
+        ),
         actions: [
           IconButton(
               onPressed: () => _startAddNewTransaction(context),
