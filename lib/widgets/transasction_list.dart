@@ -37,12 +37,15 @@ class TransactionList extends StatelessWidget {
                   margin:
                       const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      radius: 30,
+                    leading: Container(
+                      height: 60,
+                      width: 60,
+                      decoration: BoxDecoration(
+                          color: Theme.of(context).primaryColor,
+                          shape: BoxShape.circle),
                       child: Padding(
-                        child: FittedBox(child: Text('\$${trx.amount}')),
-                        padding: const EdgeInsets.all(6),
-                      ),
+                          padding: const EdgeInsets.all(8),
+                          child: FittedBox(child: Text('\$${trx.amount}'))),
                     ),
                     title: Text(
                       trx.title,
